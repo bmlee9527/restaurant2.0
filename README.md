@@ -19,7 +19,7 @@
 1. 打開你的 terminal，Clone 此專案至本機電腦
 
 ```
-git clone https://github.com/pierceshih15/restaurantList.git
+git clone https://github.com/bmlee9527/restaurantList.git
 ```
 
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
