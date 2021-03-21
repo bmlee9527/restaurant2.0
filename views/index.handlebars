@@ -31,12 +31,15 @@
                 <div class="restaurant-category mb-1">
                   <i class="icon fas fa-utensils"></i> {{this.category}}
                 </div>
-
-                <span class="badge rounded-pill bg-danger font-weight-normal">
+                <div class="badge rounded-pill bg-danger font-weight-normal col-3">
                   {{this.rating}}
                   <i class="fas fa-star fa-xs"></i>
-                </span>
-
+                </div>
+                <div class="d-flex justify-content-end">
+                  <div class="me-1"><a href="/restaurant/new"><i class="fas fa-plus"></i></a></div>
+                  <div class="me-1"><a href="/restaurant/edit"><i class="fas fa-edit"></i></a></div>
+                  <div class="me-1"><a href="/restaurant/delete"><i class="fas fa-trash-alt"></i></a></div>
+                </div>
               </div>
             </div>
           </a>

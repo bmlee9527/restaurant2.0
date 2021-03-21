@@ -4,10 +4,13 @@ const app = express()
 const port = 3000
 const restaurants = require('./models/seeds/restaurant.json')
 const Restaurant = require('./models/restaurant')
+const bodyParser = require('body-parser')
 
 const exphbs = require('express-handlebars')
 //const { request } = require('express')
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
+
+app.use(bodyParser.urlencoded({ extended: true }))
 
 const db = mongoose.connection
 
@@ -30,7 +33,10 @@ app.get('/', (req, res) => {
     .lean()
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
-  //res.render('index', { restaurants: restaurants.results })
+})
+
+app.get('/restaurant/new', (req, res) => {
+  return res.render('new')
 })
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
@@ -44,6 +50,14 @@ app.get('/search', (req, res) => {
   const restaurantfilter = restaurants.results.filter(r => r.name.toLocaleLowerCase().includes(keyword))
   console.log(restaurantfilter)
   res.render('index', { restaurants: restaurantfilter, keyword: keyword })
+})
+
+app.post('/restaurants', (req, res) => {
+  const restaurantIofo = req.body
+  return Restaurant.create({ name: restaurantIofo.name, name_en: restaurantIofo.name_en, categroy: restaurantIofo.categroy, image: restaurantIofo.image, location: restaurantIofo.location, phone: restaurantIofo.phone, google_map: restaurantIofo.google_map, rating: restaurantIofo.rating, description: restaurantIofo.description })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+  console.log(restaurantIofo)
 })
 
 
