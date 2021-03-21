@@ -57,10 +57,13 @@ app.get('/restaurant/:id/edit', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  const keyword = req.query.keyword.toLocaleLowerCase()
-  const restaurantfilter = restaurants.results.filter(r => r.name.toLocaleLowerCase().includes(keyword))
-  console.log(restaurantfilter)
-  res.render('index', { restaurants: restaurantfilter, keyword: keyword })
+  const regex = new RegExp(escapeRegex(req.query.keyword), 'gi')
+  return Restaurant.find({ name: regex })
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+  function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&")
+  }
 })
 
 app.post('/restaurants', (req, res) => {
@@ -68,7 +71,6 @@ app.post('/restaurants', (req, res) => {
   return Restaurant.create({ name: restaurantIofo.name, name_en: restaurantIofo.name_en, category: restaurantIofo.category, image: restaurantIofo.image, location: restaurantIofo.location, phone: restaurantIofo.phone, google_map: restaurantIofo.google_map, rating: restaurantIofo.rating, description: restaurantIofo.description })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
-  console.log(restaurantIofo)
 })
 
 app.post('/restaurants/:id/edit', (req, res) => {

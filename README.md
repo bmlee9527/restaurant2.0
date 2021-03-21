@@ -8,11 +8,15 @@
 1. 使用者可以快速瀏覽餐廳清單
 2. 使用者可以點擊任一餐廳，查看更多餐廳資訊，如地址、電話與簡介
 3. 使用者可以依照中文名稱、英文名稱與餐廳類別進行搜尋
+4. 使用者可以新增餐廳
+5. 使用者可以編輯餐廳資料
+6. 使用者可以刪除餐廳
 
 ## Environment SetUp - 環境建置
 
 [Node.js](https://nodejs.org/en/)
 [Express](https://expressjs.com/)
+[Mongobd](https://www.mongodb.com/)
 
 ## Installing - 專案安裝流程
 
@@ -40,10 +44,16 @@ cd restaurantList
 在 Terminal 輸入 nodemon app.js 指令
 ```
 
-5. 啟動伺服器，執行 app.js 檔案
+5. 安裝種子資料
 
 ```
-nodemon app.js
+在 Terminal 輸入 npm run seed 指令
+```
+
+6. 啟動伺服器，執行 app.js 檔案
+
+```
+在 Terminal 輸入 npm run dev
 ```
 
 請至 [http://localhost:3000](http://localhost:3000) 使用網頁
