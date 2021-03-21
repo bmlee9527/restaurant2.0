@@ -7,6 +7,7 @@ const Restaurant = require('./models/restaurant')
 const bodyParser = require('body-parser')
 
 const exphbs = require('express-handlebars')
+const restaurant = require('./models/restaurant')
 //const { request } = require('express')
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -39,10 +40,11 @@ app.get('/restaurant/new', (req, res) => {
   return res.render('new')
 })
 
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = req.params.restaurant_id.toString()
-  const restaurantInfo = restaurants.results.find(rest => rest.id.toString() === restaurant)
-  res.render('show', { restaurant: restaurantInfo })
+app.get('/restaurant/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
 })
 
 app.get('/search', (req, res) => {
