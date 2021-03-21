@@ -1,4 +1,9 @@
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
+<div class="d-flex justify-content-end px-5 mx-5">
+  <div class="me-1"><a href="/restaurant/{{restaurant._id}}/edit"><i class="fas fa-edit"></i></a></div>
+  <div class="me-1"><a href="/restaurant/delete"><i class="fas fa-trash-alt"></i></a></div>
+  <div class="me-1"><a href="/"><i class="fas fa-home"></i></a></div>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">

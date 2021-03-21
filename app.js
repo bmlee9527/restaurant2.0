@@ -45,6 +45,15 @@ app.get('/restaurant/:id', (req, res) => {
   return Restaurant.findById(id)
     .lean()
     .then((restaurant) => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurant/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 app.get('/search', (req, res) => {
@@ -56,10 +65,22 @@ app.get('/search', (req, res) => {
 
 app.post('/restaurants', (req, res) => {
   const restaurantIofo = req.body
-  return Restaurant.create({ name: restaurantIofo.name, name_en: restaurantIofo.name_en, categroy: restaurantIofo.categroy, image: restaurantIofo.image, location: restaurantIofo.location, phone: restaurantIofo.phone, google_map: restaurantIofo.google_map, rating: restaurantIofo.rating, description: restaurantIofo.description })
+  return Restaurant.create({ name: restaurantIofo.name, name_en: restaurantIofo.name_en, category: restaurantIofo.category, image: restaurantIofo.image, location: restaurantIofo.location, phone: restaurantIofo.phone, google_map: restaurantIofo.google_map, rating: restaurantIofo.rating, description: restaurantIofo.description })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
   console.log(restaurantIofo)
+})
+
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  const restaurantIofo = req.body
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = restaurantIofo.name, restaurant.name_en = restaurantIofo.name_en, restaurant.category = restaurantIofo.category, restaurant.image = restaurantIofo.image, restaurant.location = restaurantIofo.location, restaurant.phone = restaurantIofo.phone, restaurant.google_map = restaurantIofo.google_map, restaurant.rating = restaurantIofo.rating, restaurant.description = restaurantIofo.description
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurant/${id}`))
+    .catch(error => console.log(error))
 })
 
 
