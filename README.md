@@ -29,7 +29,7 @@ git clone https://github.com/bmlee9527/restaurant2.0.git
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
 
 ```
-cd restaurantList
+cd restaurant2.0
 ```
 
 3. 安裝 npm 套件
@@ -41,7 +41,7 @@ cd restaurantList
 4. 安裝 nodemon 套件
 
 ```
-在 Terminal 輸入 nodemon app.js 指令
+在 Terminal 輸入 npm install -g nodemon 指令
 ```
 
 5. 安裝種子資料
