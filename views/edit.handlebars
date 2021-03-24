@@ -2,7 +2,7 @@
   <div class="me-1"><a href="/"><i class="fas fa-home"></i></a></div>
 </div>
 <div class="container">
-  <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+  <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="POST">
     <div class="row mb-3 mt-5">
       <label for="inputEmail3" class="col-sm-2 col-form-label">Restaurant Name</label>
       <div class="col-sm-10">
