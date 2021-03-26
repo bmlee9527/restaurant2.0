@@ -51,9 +51,6 @@ router.delete('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-router.post('/', (req, res) => {
-  console.log('hi')
-  res.redirect('/')
-})
+
 
 module.exports = router
