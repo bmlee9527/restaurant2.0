@@ -11,6 +11,7 @@
 4. 使用者可以新增餐廳
 5. 使用者可以編輯餐廳資料
 6. 使用者可以刪除餐廳
+7. 使用者可以排序餐廳
 
 ## Environment SetUp - 環境建置
 
@@ -23,7 +24,7 @@
 1. 打開你的 terminal，Clone 此專案至本機電腦
 
 ```
-git clone https://github.com/bmlee9527/restaurantList.git
+git clone https://github.com/bmlee9527/restaurantList2.0.git
 ```
 
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
