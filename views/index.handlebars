@@ -16,14 +16,19 @@
   </div>
 </div>
 <div class="d-flex justify-content-end align-items-center me-5">
-  <div class="me-1"><button type="submit" class="btn btn-light btn-sm"><a href="/restaurants/new"><i
-          class="fas fa-plus"></i></a></button></div>
-  <select class="form-select form-select-sm" width="150" style="width: 150px" aria-label="Default select example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
+  <form action="/restaurants/new">
+    <div class="me-1"><button type="submit" class="btn btn-light btn-sm"><i class="fas fa-plus"></i></button></div>
+  </form>
+  <form action="/" method="POST">
+    <select name="sort" class="form-select form-select-sm" width="150" style="width: 150px"
+      aria-label="Default select example" onchange="this.form.submit()">
+      <option disabled selected>Sort</option>
+      <option value="name" {{#if (eq sort 'name' ) }} selected {{/if}}>A->Z</option>
+      <option value="-name" {{#if (eq sort '-name' )}} selected {{/if}}>Z->A</option>
+      <option value="category" {{#if (eq sort 'category' ) }} selected {{/if}}>類別</option>
+      <option value="location" {{#if (eq sort 'location' ) }} selected {{/if}}>地區</option>
+    </select>
+  </form>
 </div>
 <!-- restaurant list -->
 <div class="container mt-5">
