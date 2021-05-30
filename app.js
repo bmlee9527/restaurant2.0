@@ -2,11 +2,15 @@ const express = require('express')
 const session = require('express-session')
 const usePassport = require('./config/passport')
 const app = express()
-const PORT = process.env.PORT || 3000
 const Restaurant = require('./models/restaurant')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const PORT = process.env.PORT
 const routes = require('./routes')
 require('./config/mongoose')
 
@@ -14,7 +18,7 @@ const exphbs = require('express-handlebars')
 const router = require('./routes')
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
