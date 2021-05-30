@@ -12,6 +12,9 @@
 5. 使用者可以編輯餐廳資料
 6. 使用者可以刪除餐廳
 7. 使用者可以排序餐廳
+8. 使用者可以新增帳號
+9. 使用者可以串接facebook帳號
+9. 使用者利用個人帳號可以操作屬於自己的以上功能
 
 ## Environment SetUp - 環境建置
 
@@ -59,6 +62,15 @@ cd restaurant2.0
 ```
 
 請至 [http://localhost:3000](http://localhost:3000) 使用網頁
+```
+可使用以下帳號密碼使用
+email: user1@example.com
+password: 12345678
+
+email: user2@example.com
+password: 12345678
+
+```
 
 
 
