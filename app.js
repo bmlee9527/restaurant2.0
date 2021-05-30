@@ -1,4 +1,6 @@
 const express = require('express')
+const session = require('express-session')
+const usePassport = require('./config/passport')
 const app = express()
 const PORT = process.env.PORT || 3000
 const Restaurant = require('./models/restaurant')
@@ -10,8 +12,17 @@ require('./config/mongoose')
 const exphbs = require('express-handlebars')
 const router = require('./routes')
 
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+
+usePassport(app)
+
 app.use(routes)
 
 app.engine('handlebars', exphbs({
